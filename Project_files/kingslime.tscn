@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/slime/kingslime1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/slime/kingslime2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/slime/kingslime1.5.png" type="Texture" id=3]
+[ext_resource path="res://kingslime.gd" type="Script" id=4]
+[ext_resource path="res://Assets/slime/kingslimeshadow.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[node name="kingslime" type="KinematicBody2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -32.5403 ],
+"_edit_vertical_guides_": [ 32.1667 ]
+}
+
+[node name="shadow_sprite" type="Sprite" parent="."]
+position = Vector2( 0.00984192, -0.0252821 )
+texture = ExtResource( 5 )
+offset = Vector2( 32, -32 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.297546, -0.297558 )
+frames = SubResource( 1 )
+frame = 3
+offset = Vector2( 32, -32 )
+
+[node name="shadow_tween" type="Tween" parent="."]
+
+[node name="shadow_tween2" type="Tween" parent="."]
+
+[node name="sprite_fade_tween" type="Tween" parent="."]
+
+[node name="sprite_tween" type="Tween" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+cell_size = Vector2( 16, 16 )
+format = 1

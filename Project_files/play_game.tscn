@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/buttons/specifics/newgame_hover.png" type="Texture" id=1]
+[ext_resource path="res://Assets/buttons/specifics/newgame_default.png" type="Texture" id=2]
+[ext_resource path="res://Assets/buttons/specifics/back_default.png" type="Texture" id=3]
+[ext_resource path="res://mainfont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/buttons/specifics/continue_pressed.png" type="Texture" id=5]
+[ext_resource path="res://Assets/buttons/specifics/continue_default.png" type="Texture" id=6]
+[ext_resource path="res://Assets/buttons/specifics/newgame_pressed.png" type="Texture" id=7]
+[ext_resource path="res://Assets/buttons/specifics/continue_hover.png" type="Texture" id=8]
+[ext_resource path="res://play_game.gd" type="Script" id=9]
+[ext_resource path="res://Assets/buttons/specifics/back_pressed.png" type="Texture" id=10]
+[ext_resource path="res://Assets/buttons/specifics/continue_inactive.png" type="Texture" id=11]
+[ext_resource path="res://Assets/buttons/specifics/back_hover.png" type="Texture" id=12]
+
+[node name="play_game" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -100.0
+margin_top = -62.0
+margin_right = 100.0
+margin_bottom = 62.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newgame" type="TextureButton" parent="."]
+margin_left = -51.0
+margin_top = -34.0
+margin_right = 51.0
+margin_bottom = -18.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="continue" type="TextureButton" parent="."]
+margin_left = -51.0
+margin_top = -14.0
+margin_right = 51.0
+margin_bottom = 2.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="TextureButton" parent="."]
+margin_left = -40.0
+margin_top = 6.0
+margin_right = 40.0
+margin_bottom = 22.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -85.8978
+margin_top = 30.5486
+margin_right = 86.1022
+margin_bottom = 44.5486
+custom_fonts/font = ExtResource( 4 )
+text = "Game will autosave as you progress"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="newgame" to="." method="_on_newgame_mouse_entered"]
+[connection signal="pressed" from="newgame" to="." method="_on_newgame_pressed"]
+[connection signal="mouse_entered" from="continue" to="." method="_on_continue_mouse_entered"]
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

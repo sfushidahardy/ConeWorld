@@ -1,0 +1,159 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/cone/cone_f2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/cone/cone_f1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/cone/cone_r2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/cone/cone_r1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/cone/cone_d1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/cone/cone_d2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/cone/cone_attack.png" type="Texture" id=8]
+[ext_resource path="res://Assets/cone/cone_fallen1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/cone/cone_fallen2.png" type="Texture" id=10]
+[ext_resource path="res://Music_assets/sfx/4.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Music_assets/sfx/1.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Music_assets/sfx/2.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Music_assets/sfx/3.ogg" type="AudioStream" id=14]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 8 )
+region = Rect2( 144, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 8 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 8 )
+region = Rect2( 144, 48, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "death",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": false,
+"name": "attack_right",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "downwalk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "rightwalk",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": false,
+"name": "attack_down",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": false,
+"name": "attack_up",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=14]
+radius = 3.64811
+height = 0.0
+
+[node name="player" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 13 )
+animation = "death"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 14 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.333, 0.333 )
+limit_left = 0
+limit_top = 0
+limit_right = 800
+limit_bottom = 400
+
+[node name="attackcooldown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="animationtimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="gameovertimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="swoosh1" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource( 12 )
+
+[node name="swoosh2" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource( 13 )
+
+[node name="swoosh3" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource( 14 )
+
+[node name="swoosh4" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource( 11 )
+
+[connection signal="timeout" from="attackcooldown" to="." method="_on_attackcooldown_timeout"]
+[connection signal="timeout" from="animationtimer" to="." method="_on_animationtimer_timeout"]
+[connection signal="timeout" from="gameovertimer" to="." method="_on_gameovertimer_timeout"]

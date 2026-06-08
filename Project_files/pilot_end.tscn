@@ -1,0 +1,124 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/buttons/specifics/title_pressed.png" type="Texture" id=1]
+[ext_resource path="res://Assets/buttons/specifics/title_default.png" type="Texture" id=2]
+[ext_resource path="res://Assets/buttons/specifics/title_hover.png" type="Texture" id=3]
+[ext_resource path="res://pilot_end.gd" type="Script" id=4]
+[ext_resource path="res://mainfont.tres" type="DynamicFont" id=5]
+
+[node name="pilot_end" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -62.0
+margin_right = 100.0
+margin_bottom = 62.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -61.4489
+margin_top = -46.8812
+margin_right = 61.5511
+margin_bottom = -21.8812
+custom_fonts/font = ExtResource( 5 )
+text = "Thank you for playing the
+pilot/beta of Coneworld!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="butterflies" type="Label" parent="."]
+margin_left = -64.0
+margin_top = -12.0
+margin_right = -8.0
+margin_bottom = 3.25942
+custom_fonts/font = ExtResource( 5 )
+text = "Butterflies:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deaths" type="Label" parent="."]
+margin_left = -64.0
+margin_top = 4.0
+margin_right = -28.0
+margin_bottom = 39.2542
+custom_fonts/font = ExtResource( 5 )
+text = "Deaths:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="."]
+margin_left = -64.0
+margin_top = 20.0
+margin_right = -29.3948
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 5 )
+text = "Total score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deathcount" type="Label" parent="."]
+margin_top = 4.0
+margin_right = 64.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scorecount" type="Label" parent="."]
+margin_top = 20.0
+margin_right = 64.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttcount" type="Label" parent="."]
+margin_top = -12.0
+margin_right = 64.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backbutton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -63.0
+margin_top = 37.0
+margin_right = 63.0
+margin_bottom = 53.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="backbutton" to="." method="_on_backbutton_pressed"]

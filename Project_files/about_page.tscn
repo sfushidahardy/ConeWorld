@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/buttons/specifics/back_pressed.png" type="Texture" id=1]
+[ext_resource path="res://about_page.gd" type="Script" id=2]
+[ext_resource path="res://Assets/buttons/specifics/back_default.png" type="Texture" id=3]
+[ext_resource path="res://Assets/buttons/specifics/back_hover.png" type="Texture" id=4]
+[ext_resource path="res://mainfont.tres" type="DynamicFont" id=5]
+
+[sub_resource type="InputEventAction" id=1]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="about_page" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -100.0
+margin_top = -63.0
+margin_right = 100.0
+margin_bottom = 63.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = 21.0
+margin_right = 40.0
+margin_bottom = 37.0
+shortcut = SubResource( 2 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -53.0
+margin_top = -24.5
+margin_right = 53.0
+margin_bottom = 24.5
+custom_fonts/font = ExtResource( 5 )
+text = "
+Tribute to coneman."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
