@@ -12,7 +12,7 @@ A turn-based CPG (cone-playing game) in which you void slimes, catch butterflies
 - Step 1: duplicate the ConeWorldDemo directory. (The source files in the Project_files directory are *not needed*.)
 - Step 2: open the html file in a browser of your choice.
 
-That's it! 
+That's it! If this doesn't work, the most likely issue is that your browser has security settings against fetching local files. In that case, you can also try playing the demo [through my website](https://sfushidahardy.github.io/misc/ConeWorldDemo/coneworld.html).
 
 ## Credit?
 
